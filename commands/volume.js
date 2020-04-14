@@ -53,7 +53,7 @@ module.exports = {
         if (parseInt(args[0]) === isNaN) {
           return;
         }
-
+        if (Number.isNaN(parseInt(args[0]))) return;
         if (parseInt(args[0]) > 9999) {
           server.volume = 9999;
           server.dispatcher.setVolumeLogarithmic(9999 / 100);
