@@ -48,7 +48,7 @@ module.exports = {
           message.author.avatarURL
         )
         .setTimestamp(message.createdTimestamp);
-      await messageinfo.edit(newembed);
+       messageinfo.edit(newembed);
       }
     );
     });
