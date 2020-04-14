@@ -21,8 +21,8 @@ module.exports = {
   aliases: ["conf", "settings", "options", "option", "configure"],
   usage: "[<setting> <value>]",
   description: "Congiure the bot's settings for the current guild.",
-  needperms: ["SEND_MESSAGES","MANAGE_SERVER"],
-  permissions: [],
+  needperms: ["SEND_MESSAGES"],
+  permissions: ['MANAGE_GUILD'],
   execute(message, args, client) {
     const embed = new RichEmbed()
       .setColor(client.other)
