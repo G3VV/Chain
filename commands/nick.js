@@ -39,7 +39,7 @@ module.exports = {
             .setTimestamp(message.createdTimestamp);
           message.channel.send(embed);
         })
-        .catch(e => {
+        .catch((e) => {
           const embed = new RichEmbed()
             .setColor(client.warning)
             .setTitle("Error")
@@ -71,7 +71,7 @@ module.exports = {
           .setTimestamp(message.createdTimestamp);
         message.channel.send(embed);
       })
-      .catch(e => {
+      .catch((e) => {
         const embed = new RichEmbed()
           .setColor(client.warning)
           .setTitle("Error")
@@ -83,5 +83,5 @@ module.exports = {
           .setTimestamp(message.createdTimestamp);
         message.channel.send(embed);
       });
-  }
+  },
 };

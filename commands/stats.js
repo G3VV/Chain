@@ -34,7 +34,7 @@ module.exports = {
       .addField("Total Users", `\`${client.users.size}\``, true)
       .addField(
         "Voice Connections",
-        `\`${client.guilds.filter(n => n.voiceConnection).size}\``,
+        `\`${client.guilds.filter((n) => n.voiceConnection).size}\``,
         true
       )
       .addField(
@@ -44,12 +44,12 @@ module.exports = {
           serialComma: false,
           language: "en",
           units: ["d", "h", "m", "s"],
-          round: true
+          round: true,
         })}\``
       )
       .setThumbnail(client.user.avatarURL)
       .setTimestamp(Date.now());
 
     message.channel.send(statsembed);
-  }
+  },
 };

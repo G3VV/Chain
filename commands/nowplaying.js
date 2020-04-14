@@ -130,5 +130,5 @@ module.exports = {
         .setTimestamp(message.createdTimestamp);
       message.channel.send(nowplaying);
     }
-  }
+  },
 };

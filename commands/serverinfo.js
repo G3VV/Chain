@@ -24,7 +24,7 @@ module.exports = {
   needperms: ["SEND_MESSAGES"],
   permissions: [],
   execute(message, args, client) {
-    client.fetchUser(message.guild.ownerID).then(owner => {
+    client.fetchUser(message.guild.ownerID).then((owner) => {
       const embed = new RichEmbed()
         .setTitle(message.guild.name)
         .addField("Guild Name:", `\`${message.guild.name}\``, true)
@@ -36,7 +36,10 @@ module.exports = {
         )
         .addField("Members:", `\`${message.guild.memberCount}\``, true)
         .addField("Created At:", `\`${message.guild.createdAt}\``, true)
-        .addField("Emojis", `${message.guild.emojis.map(m => `${m}`).join("")}`)
+        .addField(
+          "Emojis",
+          `${message.guild.emojis.map((m) => `${m}`).join("")}`
+        )
         .setColor(client.other)
         .setTimestamp(Date.now())
         .setFooter(
@@ -46,5 +49,5 @@ module.exports = {
 
       message.channel.send(embed);
     });
-  }
+  },
 };

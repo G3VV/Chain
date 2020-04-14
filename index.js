@@ -23,19 +23,19 @@ const config = require("./config.json");
 const client = new Discord.Client();
 const commandFiles = fs
   .readdirSync("./commands")
-  .filter(file => file.endsWith(".js"));
+  .filter((file) => file.endsWith(".js"));
 const devFiles = fs
   .readdirSync("./devcommands")
   .filter((file) => file.endsWith(".js"));
 const DBL = require("dblapi.js");
-const dbl = new DBL(require('./secret.json').dbltoken, client);
+const dbl = new DBL(require("./secret.json").dbltoken, client);
 const humanizeDuration = require("humanize-duration");
 
 dbl.on("posted", () => {
   console.log("Server count posted!");
 });
 
-dbl.on("error", e => {
+dbl.on("error", (e) => {
   console.log(`Oops! ${e}`);
 });
 
@@ -91,11 +91,11 @@ client.on("ready", () => {
   client.channels.get("665390784165576714").send(embed2);
 
   client.user.setActivity(`v${client.version} | ${client.prefix}help`, {
-    type: "PLAYING"
+    type: "PLAYING",
   });
   let status = 1;
 
-  dbl.getVotes().then(votes => {
+  dbl.getVotes().then((votes) => {
     const something = [];
     for (var i = 0; i < 10; i++) {
       if (!votes[i]) break;
@@ -120,7 +120,7 @@ client.on("ready", () => {
     client.channels
       .get("665390225534746638")
       .fetchMessages(1)
-      .then(messages => {
+      .then((messages) => {
         messages.first().edit(votelist);
       });
   });
@@ -134,7 +134,7 @@ client.on("ready", () => {
     .addField("Total Users", `\`${client.users.size}\``, true)
     .addField(
       "Voice Connections",
-      `\`${client.guilds.filter(n => n.voiceConnection).size}\``,
+      `\`${client.guilds.filter((n) => n.voiceConnection).size}\``,
       true
     )
     .addField(
@@ -144,7 +144,7 @@ client.on("ready", () => {
         serialComma: false,
         language: "en",
         units: ["d", "h", "m", "s"],
-        round: true
+        round: true,
       })}\``
     )
     .setThumbnail(client.user.avatarURL)
@@ -152,7 +152,7 @@ client.on("ready", () => {
   client.channels
     .get("665390261031010344")
     .fetchMessages(1)
-    .then(messages => {
+    .then((messages) => {
       messages.first().edit(statsembed);
     });
 
@@ -165,7 +165,7 @@ client.on("ready", () => {
     .get("572993536304087065")
     .channels.get("666423585396490251")
     .fetchMessages(1)
-    .then(me => {
+    .then((me) => {
       client.guilds
         .get("572993536304087065")
         .channels.get("666423585396490251")
@@ -177,7 +177,7 @@ client.on("ready", () => {
     });
 
   setInterval(() => {
-    dbl.getVotes().then(votes => {
+    dbl.getVotes().then((votes) => {
       const something = [];
       for (var i = 0; i < 10; i++) {
         if (!votes[i]) break;
@@ -202,7 +202,7 @@ client.on("ready", () => {
       client.channels
         .get("665390225534746638")
         .fetchMessages(1)
-        .then(messages => {
+        .then((messages) => {
           messages.first().edit(votelist);
         });
     });
@@ -216,7 +216,7 @@ client.on("ready", () => {
       .addField("Total Users", `\`${client.users.size}\``, true)
       .addField(
         "Voice Connections",
-        `\`${client.guilds.filter(n => n.voiceConnection).size}\``,
+        `\`${client.guilds.filter((n) => n.voiceConnection).size}\``,
         true
       )
       .addField(
@@ -226,7 +226,7 @@ client.on("ready", () => {
           serialComma: false,
           language: "en",
           units: ["d", "h", "m", "s"],
-          round: true
+          round: true,
         })}\``
       )
       .setThumbnail(client.user.avatarURL)
@@ -234,7 +234,7 @@ client.on("ready", () => {
     client.channels
       .get("665390261031010344")
       .fetchMessages(1)
-      .then(messages => {
+      .then((messages) => {
         messages.first().edit(statsembed);
       });
 
@@ -246,7 +246,7 @@ client.on("ready", () => {
       );
     } else {
       client.user.setActivity(`v${client.version} | ${client.prefix}help`, {
-        type: "PLAYING"
+        type: "PLAYING",
       });
     }
 
@@ -256,7 +256,7 @@ client.on("ready", () => {
       .get("572993536304087065")
       .channels.get("666423585396490251")
       .fetchMessages(1)
-      .then(me => {
+      .then((me) => {
         if (me.editedAt) {
           me.delete();
         } else {
@@ -272,10 +272,10 @@ client.on("ready", () => {
       });
 
     client.guilds
-      .filter(n => n.voiceConnection)
-      .map(m => {
+      .filter((n) => n.voiceConnection)
+      .map((m) => {
         if (
-          m.voiceConnection.channel.members.filter(n => !n.user.bot).size <= 0
+          m.voiceConnection.channel.members.filter((n) => !n.user.bot).size <= 0
         ) {
           const server = client.servers[m.id];
 
@@ -290,7 +290,7 @@ client.on("ready", () => {
   }, 30000);
 });
 
-client.on("guildCreate", guild => {
+client.on("guildCreate", (guild) => {
   const embed = new Discord.RichEmbed()
     .setColor(client.other)
     .setTitle("New Guild")
@@ -310,7 +310,7 @@ client.on("guildCreate", guild => {
   guild.members.get(guild.ownerID).send(embed2);
 });
 
-client.on("message", message => {
+client.on("message", (message) => {
   if (message.channel.id === "666423585396490251") {
     if (parseInt(message.content) === isNaN) {
       console.log("nan");
@@ -318,7 +318,7 @@ client.on("message", message => {
       return;
     }
 
-    message.channel.fetchMessages(2).then(m => {
+    message.channel.fetchMessages(2).then((m) => {
       const me = Array.from(m)[1][1];
 
       if (me.editedAt) {
@@ -382,12 +382,12 @@ client.on("message", message => {
       .createChannel(`${message.author.username}-support`, "text", [
         { id: "572993536304087065", deny: ["VIEW_CHANNEL"] },
         { id: message.author.id, allow: ["VIEW_CHANNEL"] },
-        { id: "665688937162866708", allow: ["VIEW_CHANNEL"] }
+        { id: "665688937162866708", allow: ["VIEW_CHANNEL"] },
       ])
-      .then(channel => {
+      .then((channel) => {
         channel.setParent("588605640029765662");
 
-        channel.send("<@&665688937162866708>").then(m => m.delete());
+        channel.send("<@&665688937162866708>").then((m) => m.delete());
 
         const supportembed = new Discord.RichEmbed()
           .setTitle("Support")
@@ -429,7 +429,7 @@ client.on("message", message => {
           .setDescription(
             `You do not have all the required permission(s) for this command. You also need the following permission(s):\n\n\`\`\`${client.commands
               .get("info")
-              .permissions.filter(n => !message.member.hasPermission(n))
+              .permissions.filter((n) => !message.member.hasPermission(n))
               .join(", ")}\`\`\``
           )
           .setFooter(
@@ -453,7 +453,8 @@ client.on("message", message => {
             `I do not have the required permission(s) for this command. I also need the following permission(s):\n\n\`\`\`${client.commands
               .get("info")
               .needperms.filter(
-                n => !message.guild.members.get(client.user.id).hasPermission(n)
+                (n) =>
+                  !message.guild.members.get(client.user.id).hasPermission(n)
               )
               .join(", ")}\`\`\``
           )
@@ -505,7 +506,7 @@ client.on("message", message => {
       const checkcmd =
         client.devcommands.get(command) ||
         client.devcommands.find(
-          cmd => cmd.aliases && cmd.aliases.includes(command)
+          (cmd) => cmd.aliases && cmd.aliases.includes(command)
         );
 
       if (!checkcmd) {
@@ -515,13 +516,13 @@ client.on("message", message => {
           .setColor(client.warning)
           .setTitle("Unknown Command")
           .setDescription(
-            `Did you mean \`${client.devprefix +
+            `Did you mean \`${
+              client.devprefix +
               similarstring.findBestMatch(
                 command,
-                client.devcommands.map(m => m.name)
-              ).bestMatch.target}\`?\n\nUse \`${
-              client.devprefix
-            }help\` for a list of dev commands.`
+                client.devcommands.map((m) => m.name)
+              ).bestMatch.target
+            }\`?\n\nUse \`${client.devprefix}help\` for a list of dev commands.`
           )
           .setFooter(
             `Executed by ${message.author.tag}`,
@@ -538,7 +539,7 @@ client.on("message", message => {
           .setTitle("Error")
           .setDescription(
             `You do not have all the required permission(s) for this command. You also need the following permission(s):\n\n\`\`\`${checkcmd.permissions
-              .filter(n => !message.member.hasPermission(n))
+              .filter((n) => !message.member.hasPermission(n))
               .join(", ")}\`\`\``
           )
           .setFooter(
@@ -561,7 +562,8 @@ client.on("message", message => {
           .setDescription(
             `I do not have the required permission(s) for this command. I also need the following permission(s):\n\n\`\`\`${checkcmd.needperms
               .filter(
-                n => !message.guild.members.get(client.user.id).hasPermission(n)
+                (n) =>
+                  !message.guild.members.get(client.user.id).hasPermission(n)
               )
               .join(", ")}\`\`\``
           )
@@ -608,7 +610,7 @@ client.on("message", message => {
   const command = args.shift().toLowerCase();
   const checkcmd =
     client.commands.get(command) ||
-    client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
+    client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(command));
 
   if (!checkcmd) {
     if (message.guild.id === "264445053596991498") return;
@@ -617,13 +619,13 @@ client.on("message", message => {
       .setColor(client.warning)
       .setTitle("Unknown Command")
       .setDescription(
-        `Did you mean \`${client.prefix +
+        `Did you mean \`${
+          client.prefix +
           similarstring.findBestMatch(
             command,
-            client.commands.map(m => m.name)
-          ).bestMatch.target}\`?\n\nUse \`${
-          client.prefix
-        }help\` for a list of commands.`
+            client.commands.map((m) => m.name)
+          ).bestMatch.target
+        }\`?\n\nUse \`${client.prefix}help\` for a list of commands.`
       )
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp(message.createdTimestamp);
@@ -637,7 +639,7 @@ client.on("message", message => {
       .setTitle("Error")
       .setDescription(
         `You do not have all the required permission(s) for this command. You also need the following permission(s):\n\n\`\`\`${checkcmd.permissions
-          .filter(n => !message.member.hasPermission(n))
+          .filter((n) => !message.member.hasPermission(n))
           .join(", ")}\`\`\``
       )
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
@@ -655,7 +657,7 @@ client.on("message", message => {
       .setDescription(
         `I do not have the required permission(s) for this command. I also need the following permission(s):\n\n\`\`\`${checkcmd.needperms
           .filter(
-            n => !message.guild.members.get(client.user.id).hasPermission(n)
+            (n) => !message.guild.members.get(client.user.id).hasPermission(n)
           )
           .join(", ")}\`\`\``
       )
@@ -681,7 +683,7 @@ client.on("message", message => {
   }
 });
 
-client.on("guildMemberAdd", member => {
+client.on("guildMemberAdd", (member) => {
   if (member.guild.id === "572993536304087065") {
     const embed = new Discord.RichEmbed()
       .setColor(client.other)
@@ -697,7 +699,7 @@ client.on("guildMemberAdd", member => {
   }
 });
 
-client.on("guildMemberRemove", member => {
+client.on("guildMemberRemove", (member) => {
   if (member.guild.id === "572993536304087065") {
     const embed = new Discord.RichEmbed()
       .setColor(client.other)
@@ -711,7 +713,7 @@ client.on("guildMemberRemove", member => {
   }
 });
 
-client.on("messageReactionAdd", function(reaction, user) {
+client.on("messageReactionAdd", function (reaction, user) {
   if (reaction.message.id === "666168969064873984") {
     reaction.remove();
     const member = reaction.message.guild.members.get(user.id);
@@ -747,4 +749,4 @@ client.on("messageReactionAdd", function(reaction, user) {
 
 // });
 
-client.login(require('./secret.json').token);
+client.login(require("./secret.json").token);

@@ -28,10 +28,10 @@ module.exports = {
   execute(message, args, client) {
     const commandFiles = fs
       .readdirSync("./commands")
-      .filter(file => file.endsWith(".js"));
+      .filter((file) => file.endsWith(".js"));
     const devFiles = fs
       .readdirSync("./devcommands")
-      .filter(file => file.endsWith(".js"));
+      .filter((file) => file.endsWith(".js"));
 
     console.log("Reloading Commands.");
 
@@ -41,7 +41,7 @@ module.exports = {
       .setDescription("Reloading Commands...")
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp(message.createdTimestamp);
-    message.channel.send(embed).then(messageinfo => {
+    message.channel.send(embed).then((messageinfo) => {
       client.commands = new Discord.Collection();
       client.devcommands = new Discord.Collection();
 
@@ -71,5 +71,5 @@ module.exports = {
         .setTimestamp(message.createdTimestamp);
       messageinfo.edit(newembed);
     });
-  }
+  },
 };

@@ -26,31 +26,29 @@ module.exports = {
   needperms: ["SEND_MESSAGES"],
   permissions: [],
   async execute(message, args, client) {
-
     const embed = new RichEmbed()
       .setColor(client.other)
       .setTitle("Pull")
       .setDescription("Pulling changes from GitHub...")
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp(message.createdTimestamp);
-    await message.channel.send(embed).then(async messageinfo => {
-
-    await cp.exec(
-      `git pull ${require("../package.json").repository.url.split("+")[1]}`,
-      { cwd: __dirname },
-      async (error, stdout, stderr) => {
-        const newembed = new RichEmbed()
-        .setColor(client.other)
-        .setTitle("Pull")
-        .setDescription("Result:\n```" + stdout + "```")
-        .setFooter(
-          `Executed by ${message.author.tag}`,
-          message.author.avatarURL
-        )
-        .setTimestamp(message.createdTimestamp);
-      await messageinfo.edit(newembed);
-      }
-    );
+    await message.channel.send(embed).then(async (messageinfo) => {
+      await cp.exec(
+        `git pull ${require("../package.json").repository.url.split("+")[1]}`,
+        { cwd: __dirname },
+        async (error, stdout, stderr) => {
+          const newembed = new RichEmbed()
+            .setColor(client.other)
+            .setTitle("Pull")
+            .setDescription("Result:\n```" + stdout + "```")
+            .setFooter(
+              `Executed by ${message.author.tag}`,
+              message.author.avatarURL
+            )
+            .setTimestamp(message.createdTimestamp);
+          await messageinfo.edit(newembed);
+        }
+      );
     });
   },
 };

@@ -96,7 +96,7 @@ module.exports = {
 
         server.dispatcher.setVolumeLogarithmic(server.volume / 100);
 
-        server.dispatcher.on("end", function() {
+        server.dispatcher.on("end", function () {
           if (!server.loop) {
             server.queue.shift();
           }
@@ -160,7 +160,7 @@ module.exports = {
       client.servers[message.guild.id] = {
         queue: [],
         volume: 100,
-        loop: false
+        loop: false,
       };
     }
 
@@ -168,7 +168,7 @@ module.exports = {
 
     if (!args[0].match(videoregex)) {
       if (!args[0].match(playlistregex)) {
-        search(args.join(" "), function(_err, r) {
+        search(args.join(" "), function (_err, r) {
           const embed = new RichEmbed()
             .setColor(client.other)
             .setTitle("Music")
@@ -178,14 +178,14 @@ module.exports = {
               message.author.avatarURL
             )
             .setTimestamp(message.createdTimestamp);
-          message.channel.send(embed).then(searching => {
-            ytdl.getInfo(r.videos[0].url).then(vidinfo => {
+          message.channel.send(embed).then((searching) => {
+            ytdl.getInfo(r.videos[0].url).then((vidinfo) => {
               var server = client.servers[message.guild.id];
 
               server.queue.push(vidinfo);
 
               if (!message.guild.voiceConnection) {
-                message.member.voiceChannel.join().then(function(connection) {
+                message.member.voiceChannel.join().then(function (connection) {
                   play(connection, message);
                 });
               }
@@ -206,13 +206,13 @@ module.exports = {
       } else {
         var server = client.servers[message.guild.id];
 
-        ytlist(args[0], "url").then(res => {
+        ytlist(args[0], "url").then((res) => {
           for (const vid of res.data.playlist) {
-            ytdl.getInfo(vid, function(_err, vidinfo) {
+            ytdl.getInfo(vid, function (_err, vidinfo) {
               server.queue.push(vidinfo);
 
               if (!message.guild.voiceConnection) {
-                message.member.voiceChannel.join().then(function(connection) {
+                message.member.voiceChannel.join().then(function (connection) {
                   play(connection, message);
                 });
               }
@@ -234,13 +234,13 @@ module.exports = {
         });
       }
     } else {
-      ytdl.getInfo(args[0], function(_err, vidinfo) {
+      ytdl.getInfo(args[0], function (_err, vidinfo) {
         var server = client.servers[message.guild.id];
 
         server.queue.push(vidinfo);
 
         if (!message.guild.voiceConnection) {
-          message.member.voiceChannel.join().then(function(connection) {
+          message.member.voiceChannel.join().then(function (connection) {
             play(connection, message);
           });
         }
@@ -259,5 +259,5 @@ module.exports = {
     }
 
     message.channel.stopTyping();
-  }
+  },
 };

@@ -61,5 +61,5 @@ module.exports = {
     if (message.guild.connection) {
       message.guild.voiceConnection.disconnect();
     }
-  }
+  },
 };

@@ -30,11 +30,11 @@ module.exports = {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${require("../secret.json").ksoftapi}`
-        }
+          Authorization: `Bearer ${require("../secret.json").ksoftapi}`,
+        },
       }
-    ).then(res => {
-      res.json().then(memestuff => {
+    ).then((res) => {
+      res.json().then((memestuff) => {
         if (!memestuff.title) {
           const embed = new RichEmbed()
             .setTitle("Error")
@@ -72,5 +72,5 @@ module.exports = {
         message.channel.send(embed);
       });
     });
-  }
+  },
 };

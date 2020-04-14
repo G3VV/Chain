@@ -21,10 +21,10 @@ const config = require("./config.json");
 const client = new Discord.Client();
 const commandFiles = fs
   .readdirSync("./commands")
-  .filter(file => file.endsWith(".js"));
+  .filter((file) => file.endsWith(".js"));
 const devFiles = fs
   .readdirSync("./devcommands")
-  .filter(file => file.endsWith(".js"));
+  .filter((file) => file.endsWith(".js"));
 
 client.on("ready", () => {
   client.commands = new Discord.Collection();
@@ -78,7 +78,7 @@ client.on("ready", () => {
   client.channels.get("665390784165576714").send(embed2);
 
   client.user.setActivity(`v${client.version} | ${client.prefix}help`, {
-    type: "PLAYING"
+    type: "PLAYING",
   });
   let status = 1;
 
@@ -91,17 +91,17 @@ client.on("ready", () => {
       );
     } else {
       client.user.setActivity(`v${client.version} | ${client.prefix}help`, {
-        type: "PLAYING"
+        type: "PLAYING",
       });
     }
 
     status++;
 
     client.guilds
-      .filter(n => n.voiceConnection)
-      .map(m => {
+      .filter((n) => n.voiceConnection)
+      .map((m) => {
         if (
-          m.voiceConnection.channel.members.filter(n => !n.user.bot).size <= 0
+          m.voiceConnection.channel.members.filter((n) => !n.user.bot).size <= 0
         ) {
           const server = client.servers[m.id];
 
@@ -116,7 +116,7 @@ client.on("ready", () => {
   }, 30000);
 });
 
-client.on("guildCreate", guild => {
+client.on("guildCreate", (guild) => {
   const embed = new Discord.RichEmbed()
     .setColor(client.other)
     .setTitle("New Guild")
@@ -136,7 +136,7 @@ client.on("guildCreate", guild => {
   guild.members.get(guild.ownerID).send(embed2);
 });
 
-client.on("message", message => {
+client.on("message", (message) => {
   if (message.content === "<@!645824637338386433>") {
     if (
       !message.member.hasPermission(client.commands.get("info").permissions)
@@ -147,7 +147,7 @@ client.on("message", message => {
         .setDescription(
           `You do not have all the required permission(s) for this command. You also need the following permission(s):\n\n\`\`\`${client.commands
             .get("info")
-            .permissions.filter(n => !message.member.hasPermission(n))
+            .permissions.filter((n) => !message.member.hasPermission(n))
             .join(", ")}\`\`\``
         )
         .setFooter(
@@ -171,7 +171,7 @@ client.on("message", message => {
           `I do not have the required permission(s) for this command. I also need the following permission(s):\n\n\`\`\`${client.commands
             .get("info")
             .needperms.filter(
-              n => !message.guild.members.get(client.user.id).hasPermission(n)
+              (n) => !message.guild.members.get(client.user.id).hasPermission(n)
             )
             .join(", ")}\`\`\``
         )
@@ -221,7 +221,7 @@ client.on("message", message => {
       const checkcmd =
         client.devcommands.get(command) ||
         client.devcommands.find(
-          cmd => cmd.aliases && cmd.aliases.includes(command)
+          (cmd) => cmd.aliases && cmd.aliases.includes(command)
         );
 
       if (!checkcmd) {
@@ -229,13 +229,13 @@ client.on("message", message => {
           .setColor(client.warning)
           .setTitle("Unknown Command")
           .setDescription(
-            `Did you mean \`${client.devprefix +
+            `Did you mean \`${
+              client.devprefix +
               similarstring.findBestMatch(
                 command,
-                client.devcommands.map(m => m.name)
-              ).bestMatch.target}\`?\n\nUse \`${
-              client.devprefix
-            }help\` for a list of dev commands.`
+                client.devcommands.map((m) => m.name)
+              ).bestMatch.target
+            }\`?\n\nUse \`${client.devprefix}help\` for a list of dev commands.`
           )
           .setFooter(
             `Executed by ${message.author.tag}`,
@@ -252,7 +252,7 @@ client.on("message", message => {
           .setTitle("Error")
           .setDescription(
             `You do not have all the required permission(s) for this command. You also need the following permission(s):\n\n\`\`\`${checkcmd.permissions
-              .filter(n => !message.member.hasPermission(n))
+              .filter((n) => !message.member.hasPermission(n))
               .join(", ")}\`\`\``
           )
           .setFooter(
@@ -275,7 +275,8 @@ client.on("message", message => {
           .setDescription(
             `I do not have the required permission(s) for this command. I also need the following permission(s):\n\n\`\`\`${checkcmd.needperms
               .filter(
-                n => !message.guild.members.get(client.user.id).hasPermission(n)
+                (n) =>
+                  !message.guild.members.get(client.user.id).hasPermission(n)
               )
               .join(", ")}\`\`\``
           )
@@ -321,20 +322,20 @@ client.on("message", message => {
   const command = args.shift().toLowerCase();
   const checkcmd =
     client.commands.get(command) ||
-    client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
+    client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(command));
 
   if (!checkcmd) {
     const embed = new Discord.RichEmbed()
       .setColor(client.warning)
       .setTitle("Unknown Command")
       .setDescription(
-        `Did you mean \`${client.prefix +
+        `Did you mean \`${
+          client.prefix +
           similarstring.findBestMatch(
             command,
-            client.commands.map(m => m.name)
-          ).bestMatch.target}\`?\n\nUse \`${
-          client.prefix
-        }help\` for a list of commands.`
+            client.commands.map((m) => m.name)
+          ).bestMatch.target
+        }\`?\n\nUse \`${client.prefix}help\` for a list of commands.`
       )
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp(message.createdTimestamp);
@@ -348,7 +349,7 @@ client.on("message", message => {
       .setTitle("Error")
       .setDescription(
         `You do not have all the required permission(s) for this command. You also need the following permission(s):\n\n\`\`\`${checkcmd.permissions
-          .filter(n => !message.member.hasPermission(n))
+          .filter((n) => !message.member.hasPermission(n))
           .join(", ")}\`\`\``
       )
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
@@ -366,7 +367,7 @@ client.on("message", message => {
       .setDescription(
         `I do not have the required permission(s) for this command. I also need the following permission(s):\n\n\`\`\`${checkcmd.needperms
           .filter(
-            n => !message.guild.members.get(client.user.id).hasPermission(n)
+            (n) => !message.guild.members.get(client.user.id).hasPermission(n)
           )
           .join(", ")}\`\`\``
       )
@@ -392,4 +393,4 @@ client.on("message", message => {
   }
 });
 
-client.login(require('./secret.json').plustoken);
+client.login(require("./secret.json").plustoken);

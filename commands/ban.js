@@ -65,5 +65,5 @@ module.exports = {
         .setTimestamp(message.createdTimestamp);
       message.channel.send(embed);
     }
-  }
+  },
 };

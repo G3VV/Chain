@@ -49,7 +49,7 @@ module.exports = {
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp(message.createdTimestamp);
 
-    message.channel.send(embed).then(async msg => {
+    message.channel.send(embed).then(async (msg) => {
       try {
         const code = await eval(args.join(" ")); // Store the eval code to a variable
         const inspected = await inspect(code); // inspect the code eval output
@@ -72,7 +72,7 @@ module.exports = {
         } else {
           await post("https://hastebin.com/documents")
             .send(inspected.toString())
-            .then(response => {
+            .then((response) => {
               embed = new RichEmbed()
                 .setColor(client.success)
                 .setTitle("Eval")
@@ -89,7 +89,7 @@ module.exports = {
 
               msg.edit(embed);
             })
-            .catch(_err => {
+            .catch((_err) => {
               embed = new RichEmbed()
                 .setColor(client.warning)
                 .setTitle("Eval")
@@ -123,5 +123,5 @@ module.exports = {
     });
 
     message.channel.stopTyping();
-  }
+  },
 };

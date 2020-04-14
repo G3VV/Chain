@@ -22,7 +22,7 @@ module.exports = {
   usage: "[<setting> <value>]",
   description: "Congiure the bot's settings for the current guild.",
   needperms: ["SEND_MESSAGES"],
-  permissions: ['MANAGE_GUILD'],
+  permissions: ["MANAGE_GUILD"],
   execute(message, args, client) {
     const embed = new RichEmbed()
       .setColor(client.other)
@@ -33,5 +33,5 @@ module.exports = {
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp(message.createdTimestamp);
     message.channel.send(embed);
-  }
+  },
 };

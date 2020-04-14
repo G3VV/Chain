@@ -49,13 +49,11 @@ module.exports = {
           {
             method: "GET",
             headers: {
-              Authorization: `Bearer ${
-                require("../secret.json").ksoftapi
-              }`
-            }
+              Authorization: `Bearer ${require("../secret.json").ksoftapi}`,
+            },
           }
-        ).then(res => {
-          res.json().then(lyrics => {
+        ).then((res) => {
+          res.json().then((lyrics) => {
             if (lyrics.data[0].lyrics.length <= 3896) {
               const how_many_to_split_at = 1948;
               const song_parts = [];
@@ -70,7 +68,7 @@ module.exports = {
                 );
               }
 
-              song_parts.forEach(a => {
+              song_parts.forEach((a) => {
                 const embed = new RichEmbed()
                   .setColor(client.other)
                   .setAuthor(
@@ -104,7 +102,7 @@ module.exports = {
                   );
                 }
 
-                song_parts.forEach(a => {
+                song_parts.forEach((a) => {
                   const embed = new RichEmbed()
                     .setColor(client.other)
                     .setAuthor(
@@ -162,11 +160,13 @@ module.exports = {
         {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${require("../config.json").client.ksoftapi}`
-          }
+            Authorization: `Bearer ${
+              require("../config.json").client.ksoftapi
+            }`,
+          },
         }
-      ).then(res => {
-        res.json().then(lyrics => {
+      ).then((res) => {
+        res.json().then((lyrics) => {
           if (lyrics.data[0].lyrics.length <= 3896) {
             const how_many_to_split_at = 1948;
             const song_parts = [];
@@ -181,7 +181,7 @@ module.exports = {
               );
             }
 
-            song_parts.forEach(a => {
+            song_parts.forEach((a) => {
               const embed = new RichEmbed()
                 .setColor(client.other)
                 .setAuthor(
@@ -215,7 +215,7 @@ module.exports = {
                 );
               }
 
-              song_parts.forEach(a => {
+              song_parts.forEach((a) => {
                 const embed = new RichEmbed()
                   .setColor(client.other)
                   .setAuthor(
@@ -263,5 +263,5 @@ module.exports = {
 
       message.channel.stopTyping();
     }
-  }
+  },
 };

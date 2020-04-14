@@ -72,12 +72,12 @@ module.exports = {
             giveawaymessage.reactions
               .first()
               .fetchUsers()
-              .then(users => {
-                users = users.filter(n => !n.bot);
+              .then((users) => {
+                users = users.filter((n) => !n.bot);
                 const randomnumber = Math.round(
                   Math.random() * (users.size - 1)
                 );
-                const winner = users.map(m => m)[randomnumber];
+                const winner = users.map((m) => m)[randomnumber];
                 const embed = new RichEmbed()
                   .setColor(client.other)
                   .setTitle("Giveaway Ended")
@@ -105,7 +105,7 @@ module.exports = {
                 giveawaymessage.edit(embed);
                 giveawaymessage
                   .clearReactions()
-                  .catch(error =>
+                  .catch((error) =>
                     console.error("Failed to clear reactions: ", error)
                   );
                 message.delete();
@@ -136,5 +136,5 @@ module.exports = {
         }
       }
     });
-  }
+  },
 };

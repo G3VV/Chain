@@ -28,10 +28,10 @@ module.exports = {
     fetch("https://api.ksoft.si/images/random-wikihow?nsfw=false", {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${require("../secret.json").ksoftapi}`
-      }
-    }).then(res => {
-      res.json().then(memestuff => {
+        Authorization: `Bearer ${require("../secret.json").ksoftapi}`,
+      },
+    }).then((res) => {
+      res.json().then((memestuff) => {
         const embed = new RichEmbed()
           .setTitle(memestuff.title)
           .setAuthor(
@@ -51,5 +51,5 @@ module.exports = {
         message.channel.send(embed);
       });
     });
-  }
+  },
 };

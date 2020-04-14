@@ -28,11 +28,15 @@ module.exports = {
       .setColor(client.other)
       .setTitle("Bot Info")
       .setDescription(
-        "Created by: `" + client.users.get("445035187370328066").username + "#" + client.users.get("445035187370328066").discriminator + "`\n\nContributors:\n`" +
+        "Created by: `" +
+          client.users.get("445035187370328066").username +
+          "#" +
+          client.users.get("445035187370328066").discriminator +
+          "`\n\nContributors:\n`" +
           client.guilds
             .get("572993536304087065")
             .roles.get("647163176831680523")
-            .members.map(m => m.user.tag)
+            .members.map((m) => m.user.tag)
             .join(", ") +
           "`"
       )
@@ -41,5 +45,5 @@ module.exports = {
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp(message.createdTimestamp);
     message.channel.send(embed);
-  }
+  },
 };

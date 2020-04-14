@@ -31,7 +31,7 @@ module.exports = {
         .setDescription(
           "Commands:\n```asciidoc\n" +
             client.commands
-              .map(m => `== ${client.prefix + m.name}\n${m.description}`)
+              .map((m) => `== ${client.prefix + m.name}\n${m.description}`)
               .join("\n") +
             "```"
         )
@@ -54,7 +54,7 @@ module.exports = {
             .setTimestamp(message.createdTimestamp);
           message.channel.send(successembed);
         })
-        .catch(e => {
+        .catch((e) => {
           const errorembed = new RichEmbed()
             .setColor(client.warning)
             .setTitle("Help")
@@ -70,7 +70,7 @@ module.exports = {
       const checkcmd =
         client.commands.get(args[0].toLowerCase()) ||
         client.commands.find(
-          cmd => cmd.aliases && cmd.aliases.includes(args[0].toLowerCase())
+          (cmd) => cmd.aliases && cmd.aliases.includes(args[0].toLowerCase())
         );
 
       if (checkcmd) {
@@ -132,5 +132,5 @@ module.exports = {
         message.channel.send(embed);
       }
     }
-  }
+  },
 };

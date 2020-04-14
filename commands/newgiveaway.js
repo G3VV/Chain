@@ -46,9 +46,9 @@ module.exports = {
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp(message.createdTimestamp);
 
-    message.channel.send(embed).then(m => {
+    message.channel.send(embed).then((m) => {
       m.react("🎉");
       message.delete();
     });
-  }
+  },
 };
