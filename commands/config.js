@@ -15,7 +15,6 @@
 //
 
 const { RichEmbed } = require("discord.js");
-const sqlite3 = require('sqlite3');
 
 module.exports = {
   name: "config",
