@@ -28,7 +28,7 @@ const devFiles = fs
   .readdirSync("./devcommands")
   .filter(file => file.endsWith(".js"));
 const DBL = require("dblapi.js");
-const dbl = new DBL(secret.dbltoken, client);
+const dbl = new DBL(require('./secret.json').dbltoken, client);
 const humanizeDuration = require("humanize-duration");
 
 dbl.on("posted", () => {
@@ -747,4 +747,4 @@ client.on("messageReactionAdd", function(reaction, user) {
 
 // });
 
-client.login(secret.token);
+client.login(require('./secret.json').token);

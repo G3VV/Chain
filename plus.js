@@ -392,4 +392,4 @@ client.on("message", message => {
   }
 });
 
-client.login(secret.plustoken);
+client.login(require('./secret.json').plustoken);

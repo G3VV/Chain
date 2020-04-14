@@ -371,4 +371,4 @@ client.on("message", message => {
   }
 });
 
-client.login(secret.alphatoken);
+client.login(require('./secret.json').alphatoken);
