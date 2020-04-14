@@ -26,7 +26,7 @@ const commandFiles = fs
   .filter(file => file.endsWith(".js"));
 const devFiles = fs
   .readdirSync("./devcommands")
-  .filter(file => file.endsWith(".js"));
+  .filter((file) => file.endsWith(".js"));
 const DBL = require("dblapi.js");
 const dbl = new DBL(require('./secret.json').dbltoken, client);
 const humanizeDuration = require("humanize-duration");

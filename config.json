@@ -7,28 +7,28 @@
       "version": "1.3.0"
     },
     "colors": {
-      "client": {
-        "success": "#00ff00",
-        "warn": "#ff0000",
-        "otherchain": "#00BFFF",
-        "otheralpha": "#FF2638",
-        "otherplus": "#FFCC42",
-        "gold": "#fcba03"
-      },
-      "other": {
-        "aliceblue": "#f0f8ff",
-        "antiquewhite": "#faebd7",
-        "aqua": "#00ffff",
-        "aquamarine": "#7fffd4",
-        "azure": "#f0ffff",
-        "beige": "#f5f5dc",
-        "bisque": "#ffe4c4",
-        "black": "#000000",
-        "blanchedalmond": "#ffebcd",
-        "blue": "#0000ff",
-        "blueviolet": "#8a2be2",
-        "brown": "#a52a2a"
-      }
-    }
+                "client": {
+                  "success": "#00ff00",
+                  "warn": "#ff0000",
+                  "otherchain": "#00BFFF",
+                  "otheralpha": "#FF2638",
+                  "otherplus": "#FFCC42",
+                  "gold": "#fcba03"
+                },
+                "other": {
+                  "aliceblue": "#f0f8ff",
+                  "antiquewhite": "#faebd7",
+                  "aqua": "#00ffff",
+                  "aquamarine": "#7fffd4",
+                  "azure": "#f0ffff",
+                  "beige": "#f5f5dc",
+                  "bisque": "#ffe4c4",
+                  "black": "#000000",
+                  "blanchedalmond": "#ffebcd",
+                  "blue": "#0000ff",
+                  "blueviolet": "#8a2be2",
+                  "brown": "#a52a2a"
+                }
+              }
   }
   

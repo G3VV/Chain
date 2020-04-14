@@ -15,7 +15,7 @@
 //
 
 const { RichEmbed } = require("discord.js");
-const git = require('simple-git/promise');
+const git = require("simple-git/promise");
 const cp = require("child_process");
 
 module.exports = {
@@ -26,12 +26,12 @@ module.exports = {
   needperms: ["SEND_MESSAGES"],
   permissions: [],
   async execute(message, args, client) {
-
-    await cp.exec(`git pull ${require('../package.json').repository.url.split("+")[1]}`, { cwd: __dirname }, async (error, stdout, stderr) => {
-
-      await message.channel.send(`\`\`\`${stdout}\`\`\``);
-
-    });
-
-  }
+    await cp.exec(
+      `git pull ${require("../package.json").repository.url.split("+")[1]}`,
+      { cwd: __dirname },
+      async (error, stdout, stderr) => {
+        await message.channel.send(`\`\`\`${stdout}\`\`\``);
+      }
+    );
+  },
 };
