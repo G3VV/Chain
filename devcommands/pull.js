@@ -33,9 +33,9 @@ module.exports = {
       .setDescription("Pulling changes from GitHub...")
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp(message.createdTimestamp);
-    await message.channel.send(embed).then(messageinfo => {
+    message.channel.send(embed).then(messageinfo => {
 
-    await cp.exec(
+    cp.exec(
       `git pull ${require("../package.json").repository.url.split("+")[1]}`,
       { cwd: __dirname },
       async (error, stdout, stderr) => {
