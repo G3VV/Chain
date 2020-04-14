@@ -33,7 +33,7 @@ module.exports = {
       .setDescription("Pulling changes from GitHub...")
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp(message.createdTimestamp);
-    message.channel.send(embed).then(messageinfo => {
+    await message.channel.send(embed).then(messageinfo => {
 
     await cp.exec(
       `git pull ${require("../package.json").repository.url.split("+")[1]}`,
@@ -48,7 +48,7 @@ module.exports = {
           message.author.avatarURL
         )
         .setTimestamp(message.createdTimestamp);
-       messageinfo.edit(newembed);
+      await messageinfo.edit(newembed);
       }
     );
     });
