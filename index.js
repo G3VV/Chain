@@ -392,7 +392,7 @@ client.on("message", message => {
         const supportembed = new Discord.RichEmbed()
           .setTitle("Support")
           .setDescription(
-            `Please wait while a staff member helps you with your problem. If the problem has been resolved end the session by typing \`%close\`\n\n\`${message.content}\``
+            `Please wait while a staff member helps you with your problem. If the problem has been resolved end the session by typing \`${client.prefix}close\`\n\n\`${message.content}\``
           )
           .setColor(client.other)
           .setTimestamp(Date.now());
