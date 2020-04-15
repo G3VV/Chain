@@ -4,6 +4,7 @@
   "description": "Chain is an all-in-one multipurpose bot designed for ease of use. It brings in features such as Moderation, Music Bot and much more!",
   "main": "index.js",
   "dependencies": {
+    "covid19-api": "^1.2.0",
     "dblapi.js": "^2.3.0",
     "discord.js": "^11.6.4",
     "humanize-duration": "^3.21.0",
