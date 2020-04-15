@@ -15,6 +15,7 @@
 //
 
 const { RichEmbed } = require("discord.js");
+const db = require("rethinkdb");
 
 module.exports = {
   name: "config",
