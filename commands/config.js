@@ -20,19 +20,21 @@ const db = require("rethinkdb");
 module.exports = {
   name: "config",
   aliases: ["conf", "settings", "options", "option", "configure"],
-  usage: "[<setting> <value>]",
+  usage: "[<option> <value>]",
   description: "Congiure the bot's settings for the current guild.",
   needperms: ["SEND_MESSAGES"],
   permissions: ["MANAGE_GUILD"],
   execute(message, args, client) {
+    var con = db.connect();
     const embed = new RichEmbed()
       .setColor(client.other)
-      .setTitle("Important Links")
+      .setTitle("Config Options")
       .setDescription(
         "**Permanant Discord Invite:** https://discord.gg/ft3vEZU\n**Invite Bot Link:** http://bit.ly/InviteChain\n**Top.gg Vote Link:** https://top.gg/bot/645824637338386433/vote\n**Website:** https://proximitynow.gitbook.io/chain"
       )
       .setFooter(`Executed by ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp(message.createdTimestamp);
     message.channel.send(embed);
+    con.close();
   },
 };
