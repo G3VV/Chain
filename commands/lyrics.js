@@ -68,8 +68,41 @@ module.exports = {
                 );
               }
 
-              song_parts
-                .forEach((a) => {
+              song_parts.forEach((a) => {
+                const embed = new RichEmbed()
+                  .setColor(client.other)
+                  .setAuthor(
+                    "Lyrics provided by KSoft",
+                    "https://cdn.ksoft.si/images/Logo128.png",
+                    "https://api.ksoft.si/"
+                  )
+                  .setDescription(
+                    `**${lyrics.data[0].name}**\n*${lyrics.data[0].artist}*\n\n${a}`
+                  )
+                  .setThumbnail(lyrics.data[0].album_art)
+                  .setFooter(
+                    `Executed by ${message.author.tag}`,
+                    message.author.avatarURL
+                  )
+                  .setTimestamp(message.createdTimestamp);
+                message.channel.send(embed);
+              });
+            } else {
+              try {
+                const how_many_to_split_at = 1948;
+                const song_parts = [];
+
+                for (
+                  var i = 0, charsLength = lyrics.data[0].lyrics.length;
+                  i < charsLength;
+                  i += how_many_to_split_at
+                ) {
+                  song_parts.push(
+                    lyrics.data[0].lyrics.substring(i, i + how_many_to_split_at)
+                  );
+                }
+
+                song_parts.forEach((a) => {
                   const embed = new RichEmbed()
                     .setColor(client.other)
                     .setAuthor(
@@ -86,67 +119,8 @@ module.exports = {
                       message.author.avatarURL
                     )
                     .setTimestamp(message.createdTimestamp);
-                  message.channel.send(embed);
-                })
-                .catch((e) => {
-                  const embed = new RichEmbed()
-                    .setColor(client.warning)
-                    .setDescription(`Unable to fetch lyrics.\n\`\`\`${e}\`\`\``)
-                    .setFooter(
-                      `Executed by ${message.author.tag}`,
-                      message.author.avatarURL
-                    )
-                    .setTimestamp(message.createdTimestamp);
-                  message.channel.send(embed);
+                  message.author.send(embed);
                 });
-            } else {
-              try {
-                const how_many_to_split_at = 1948;
-                const song_parts = [];
-
-                for (
-                  var i = 0, charsLength = lyrics.data[0].lyrics.length;
-                  i < charsLength;
-                  i += how_many_to_split_at
-                ) {
-                  song_parts.push(
-                    lyrics.data[0].lyrics.substring(i, i + how_many_to_split_at)
-                  );
-                }
-
-                song_parts
-                  .forEach((a) => {
-                    const embed = new RichEmbed()
-                      .setColor(client.other)
-                      .setAuthor(
-                        "Lyrics provided by KSoft",
-                        "https://cdn.ksoft.si/images/Logo128.png",
-                        "https://api.ksoft.si/"
-                      )
-                      .setDescription(
-                        `**${lyrics.data[0].name}**\n*${lyrics.data[0].artist}*\n\n${a}`
-                      )
-                      .setThumbnail(lyrics.data[0].album_art)
-                      .setFooter(
-                        `Executed by ${message.author.tag}`,
-                        message.author.avatarURL
-                      )
-                      .setTimestamp(message.createdTimestamp);
-                    message.author.send(embed);
-                  })
-                  .catch((e) => {
-                    const embed = new RichEmbed()
-                      .setColor(client.warning)
-                      .setDescription(
-                        `Unable to fetch lyrics.\n\`\`\`${e}\`\`\``
-                      )
-                      .setFooter(
-                        `Executed by ${message.author.tag}`,
-                        message.author.avatarURL
-                      )
-                      .setTimestamp(message.createdTimestamp);
-                    message.channel.send(embed);
-                  });
 
                 const notify = new RichEmbed()
                   .setColor(client.success)
@@ -207,8 +181,41 @@ module.exports = {
               );
             }
 
-            song_parts
-              .forEach((a) => {
+            song_parts.forEach((a) => {
+              const embed = new RichEmbed()
+                .setColor(client.other)
+                .setAuthor(
+                  "Lyrics provided by KSoft",
+                  "https://cdn.ksoft.si/images/Logo128.png",
+                  "https://api.ksoft.si/"
+                )
+                .setDescription(
+                  `**${lyrics.data[0].name}**\n*${lyrics.data[0].artist}*\n\n${a}`
+                )
+                .setThumbnail(lyrics.data[0].album_art)
+                .setFooter(
+                  `Executed by ${message.author.tag}`,
+                  message.author.avatarURL
+                )
+                .setTimestamp(message.createdTimestamp);
+              message.channel.send(embed);
+            });
+          } else {
+            try {
+              const how_many_to_split_at = 1948;
+              const song_parts = [];
+
+              for (
+                var i = 0, charsLength = lyrics.data[0].lyrics.length;
+                i < charsLength;
+                i += how_many_to_split_at
+              ) {
+                song_parts.push(
+                  lyrics.data[0].lyrics.substring(i, i + how_many_to_split_at)
+                );
+              }
+
+              song_parts.forEach((a) => {
                 const embed = new RichEmbed()
                   .setColor(client.other)
                   .setAuthor(
@@ -225,65 +232,8 @@ module.exports = {
                     message.author.avatarURL
                   )
                   .setTimestamp(message.createdTimestamp);
-                message.channel.send(embed);
-              })
-              .catch((e) => {
-                const embed = new RichEmbed()
-                  .setColor(client.warning)
-                  .setDescription(`Unable to fetch lyrics.\n\`\`\`${e}\`\`\``)
-                  .setFooter(
-                    `Executed by ${message.author.tag}`,
-                    message.author.avatarURL
-                  )
-                  .setTimestamp(message.createdTimestamp);
-                message.channel.send(embed);
+                message.author.send(embed);
               });
-          } else {
-            try {
-              const how_many_to_split_at = 1948;
-              const song_parts = [];
-
-              for (
-                var i = 0, charsLength = lyrics.data[0].lyrics.length;
-                i < charsLength;
-                i += how_many_to_split_at
-              ) {
-                song_parts.push(
-                  lyrics.data[0].lyrics.substring(i, i + how_many_to_split_at)
-                );
-              }
-
-              song_parts
-                .forEach((a) => {
-                  const embed = new RichEmbed()
-                    .setColor(client.other)
-                    .setAuthor(
-                      "Lyrics provided by KSoft",
-                      "https://cdn.ksoft.si/images/Logo128.png",
-                      "https://api.ksoft.si/"
-                    )
-                    .setDescription(
-                      `**${lyrics.data[0].name}**\n*${lyrics.data[0].artist}*\n\n${a}`
-                    )
-                    .setThumbnail(lyrics.data[0].album_art)
-                    .setFooter(
-                      `Executed by ${message.author.tag}`,
-                      message.author.avatarURL
-                    )
-                    .setTimestamp(message.createdTimestamp);
-                  message.author.send(embed);
-                })
-                .catch((e) => {
-                  const embed = new RichEmbed()
-                    .setColor(client.warning)
-                    .setDescription(`Unable to fetch lyrics.\n\`\`\`${e}\`\`\``)
-                    .setFooter(
-                      `Executed by ${message.author.tag}`,
-                      message.author.avatarURL
-                    )
-                    .setTimestamp(message.createdTimestamp);
-                  message.channel.send(embed);
-                });
 
               const notify = new RichEmbed()
                 .setColor(client.success)
