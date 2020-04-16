@@ -186,6 +186,7 @@ module.exports = {
 
               if (!message.guild.voiceConnection) {
                 message.member.voiceChannel.join().then(function (connection) {
+                  message.guild.voiceConnection.voice.setSelfDeaf(true);
                   play(connection, message);
                 });
               }
@@ -213,6 +214,7 @@ module.exports = {
 
               if (!message.guild.voiceConnection) {
                 message.member.voiceChannel.join().then(function (connection) {
+                  message.guild.voiceConnection.voice.setSelfDeaf(true);
                   play(connection, message);
                 });
               }
@@ -241,6 +243,7 @@ module.exports = {
 
         if (!message.guild.voiceConnection) {
           message.member.voiceChannel.join().then(function (connection) {
+            message.guild.voiceConnection.voice.setSelfDeaf(true);
             play(connection, message);
           });
         }
