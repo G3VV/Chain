@@ -44,8 +44,6 @@ module.exports = {
     }
 
     function play(connection, message) {
-      message.guild.voiceConnection.voice.setSelfDeaf(true);
-
       var server = client.servers[message.guild.id];
 
       if (server.queue[0]) {
@@ -188,7 +186,6 @@ module.exports = {
 
               if (!message.guild.voiceConnection) {
                 message.member.voiceChannel.join().then(function (connection) {
-                  message.guild.voiceConnection.voice.setSelfDeaf(true);
                   play(connection, message);
                 });
               }
@@ -216,7 +213,6 @@ module.exports = {
 
               if (!message.guild.voiceConnection) {
                 message.member.voiceChannel.join().then(function (connection) {
-                  message.guild.voiceConnection.voice.setSelfDeaf(true);
                   play(connection, message);
                 });
               }
@@ -245,7 +241,6 @@ module.exports = {
 
         if (!message.guild.voiceConnection) {
           message.member.voiceChannel.join().then(function (connection) {
-            message.guild.voiceConnection.voice.setSelfDeaf(true);
             play(connection, message);
           });
         }
