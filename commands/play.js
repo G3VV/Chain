@@ -44,6 +44,8 @@ module.exports = {
     }
 
     function play(connection, message) {
+      message.guild.voiceConnection.voice.setSelfDeaf(true);
+
       var server = client.servers[message.guild.id];
 
       if (server.queue[0]) {
