@@ -76,7 +76,7 @@ body {
   line-height: 1.5;
 }
 .lib a {
-  color: #3191ff !important;
+  color: #61099c !important;
   content: Made with;
   transition: all 0.8s;
 }
@@ -94,12 +94,12 @@ body {
   transition: all 0.8s;
 }
 .btn-orange {
-  background-color: #3191ff;
+  background-color: #61099c;
   color: black;
 }
 .btn-orange:hover {
   background-color: #00000065;
-  color: #3191ff;
+  color: #61099c;
   transition: all 0.2s ease-in-out;
   border-left-style: solid;
 }
@@ -112,7 +112,7 @@ body {
   user-select: none;
   background: #0000003d;
   border-radius: 5px;
-  color: #3191ff;
+  color: #61099c;
   display: inline-block;
   height: 26px;
   line-height: 26px;
@@ -133,14 +133,14 @@ body {
   -ms-user-select: none;
   user-select: none;
   background-color: black;
-  color: #3191ff;
+  color: #61099c;
   transition: all 0.5s;
   font-weight: 450;
   border-radius: 5px;
 }
 .atag:after {
   border-bottom: 13px solid transparent;
-  border-left: 10px solid #3191ff;
+  border-left: 10px solid #61099c;
   border-top: 13px solid transparent;
   content: "";
   position: absolute;
@@ -151,7 +151,7 @@ body {
 .atag:hover:after {
   background: transparent !important;
   border-bottom: 13px solid transparent;
-  border-left: 10px solid #3191ff;
+  border-left: 10px solid #61099c;
   border-top: 13px solid transparent;
   content: "";
   position: absolute;
@@ -168,7 +168,7 @@ code {
   font-weight: normal;
   padding: 0.25em 0.5em 0.25em;
   border-radius: 5px;
-  color: #3191ff;
+  color: #61099c;
   transition: all 0.5s;
 }
 code:hover {
@@ -179,12 +179,12 @@ code:hover {
 }
 ::-moz-selection {
   /* Code for Firefox */
-  color: #3191ff;
+  color: #61099c;
   background: #00000040;
   border-radius: 15px;
 }
 ::selection {
-  color: #3191ff;
+  color: #61099c;
   background: #00000040;
 }
 ::-webkit-scrollbar {
@@ -216,7 +216,7 @@ code:hover {
   transition: all 0.2s;
 }
 #menu ul li a:not(.btn):hover {
-  color: #3191ff !important;
+  color: #61099c !important;
   background-color: #00000045 !important;
   border-radius: 6px !important;
   transition: all 0.2s;
@@ -237,14 +237,14 @@ code:hover {
 }
 .btn-like {
   background-color: #00000030;
-  color: #3191ff;
+  color: #61099c;
   border: none;
   border-radius: 5px;
   transition: all 0.8s;
 }
 .btn-like:hover {
   background-color: black;
-  color: #3191ff;
+  color: #61099c;
   padding-right: 5px;
   transition: all 0.8s;
   border-radius: 5px;
@@ -275,71 +275,71 @@ code:hover {
   transition: all 0.8s;
 }
 .status.green {
-  color: #3191ff !important;
+  color: #61099c !important;
   content: Bot is;
 }
 .status.green::before {
-  background-color: #3191ff !important;
-  color: #3191ff !important;
+  background-color: #61099c !important;
+  color: #61099c !important;
 }
 #edit {
   background-color: #00000045;
   transition: all 0.8s;
-  color: #3191ff;
+  color: #61099c;
   border-radius: 5px;
 }
 #edit:hover {
   background-color: black;
   border-radius: 5px;
-  color: #3191ff;
+  color: #61099c;
   transition: all 0.8s;
 }
 #delete {
   background-color: #00000045 !important;
   transition: all 0.8s !important;
-  color: #3191ff !important;
+  color: #61099c !important;
   border-radius: 5px !important;
 }
 #delete:hover {
   background-color: black !important;
   border-radius: 5px !important;
-  color: #3191ff !important;
+  color: #61099c !important;
   transition: all 0.8s !important;
 }
 #report {
   background-color: #00000045 !important;
   transition: all 0.8s !important;
-  color: #3191ff !important;
+  color: #61099c !important;
   border-radius: 5px !important;
 }
 #websitelink {
   background-color: #00000045 !important;
   transition: all 0.8s !important;
-  color: #3191ff !important;
+  color: #61099c !important;
   border-radius: 5px !important;
 }
 #websitelink:hover {
   background-color: black !important;
   transition: all 0.8s !important;
-  color: #3191ff !important;
+  color: #61099c !important;
   border-radius: 5px !important;
 }
 #report:hover {
   background-color: black !important;
   border-radius: 5px !important;
-  color: #3191ff !important;
+  color: #61099c !important;
   transition: all 0.8s !important;
 }
 #support {
   background-color: #00000045 !important;
   transition: all 0.8s !important;
-  color: #3191ff !important;
+  color: #61099c !important;
   border-radius: 5px !important;
 }
 #support:hover {
   background-color: black !important;
   border-radius: 5px !important;
-  color: #3191ff !important;
+  color: #61099c !important;
   transition: all 0.8s !important;
 }
 .longdescription .content {
