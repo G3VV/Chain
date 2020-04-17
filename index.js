@@ -27,17 +27,17 @@ const commandFiles = fs
 const devFiles = fs
   .readdirSync("./devcommands")
   .filter((file) => file.endsWith(".js"));
-//const DBL = require("dblapi.js");
-//const dbl = new DBL(require("./secret.json").dbltoken, client);
+const DBL = require("dblapi.js");
+const dbl = new DBL(require("./secret.json").dbltoken, client);
 const humanizeDuration = require("humanize-duration");
 
-//dbl.on("posted", () => {
-  //console.log("Server count posted!");
-//});
+dbl.on("posted", () => {
+  console.log("Server count posted!");
+});
 
-//dbl.on("error", (e) => {
-  //console.log(`Oops! ${e}`);
-//});
+dbl.on("error", (e) => {
+  console.log(`Oops! ${e}`);
+});
 
 client.on("ready", () => {
   client.commands = new Discord.Collection();
