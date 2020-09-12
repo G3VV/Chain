@@ -8,7 +8,7 @@
     "dblapi.js": "^2.3.0",
     "discord.js": "^11.6.4",
     "humanize-duration": "^3.21.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "node-os-utils": "^1.2.2",
     "opusscript": "0.0.7",
     "quick.db": "^7.0.0-b22",
